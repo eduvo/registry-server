@@ -11,9 +11,17 @@ func SignIn(r render.Render) {
 }
 
 func LogIn(res http.ResponseWriter, req *http.Request) {
+	/*
+	   SPEC
+	   redirect to?
+	   (a) referral
+	   (b) pass by argument
+
+	   (b) > (a) ?
+	*/
 	success, _ := Auth(req.FormValue("email"), req.FormValue("password"))
 	if success {
-		http.Redirect(res, req, "http://www.google.com", http.StatusMovedPermanently)
+		http.Redirect(res, req, "http://www.google.com", http.StatusFound)
 	} else {
 
 	}
