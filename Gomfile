@@ -3,3 +3,4 @@ gom 'github.com/codegangsta/martini-contrib/render'
 gom 'github.com/codegangsta/martini-contrib/sessions'
 
 gom 'github.com/davecgh/go-spew/spew'
+gom 'github.com/globocom/config'
