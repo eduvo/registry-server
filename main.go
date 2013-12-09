@@ -9,18 +9,22 @@ import (
 	"log"
 )
 
+var conf Conf
+
 func init() {
 	if err := Flags(); err != nil {
 		log.Fatal(err)
 		os.Exit(1)
 	}
-	if err := Config(); err != nil {
-		//log.Fatal(err)
+	err := Config() // setups conf var
+	if err != nil {
+		log.Fatal(err)
 		os.Exit(1)
 	}
 }
 
 func main() {
+	//println(conf.servername)
 	m := martini.Classic()
 	store := sessions.NewCookieStore([]byte("secret123"))
 	m.Use(sessions.Sessions("my_session", store))

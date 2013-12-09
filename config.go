@@ -23,5 +23,9 @@ func Config() error {
 	 log.Fatal(err)
    return err
   }
+  value, err := config.Get("servername")
+  str := value.(string)
+  conf.servername = str
+
   return err
 }

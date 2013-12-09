@@ -2,10 +2,11 @@ package main
 
 import (
 	"flag"
+  "os"
 )
 
 var (
-	ConfigFile string
+	ConfigFile = os.Getenv("ENVIRONMENT")
 )
 
 func init() {
