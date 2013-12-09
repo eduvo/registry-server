@@ -10,9 +10,8 @@ func main() {
 
 	m.Use(render.Renderer())
 
-	m.Get("/sign_in", func(r render.Render) {
-		r.HTML(200, "login", nil)
-	})
+	m.Get("/sign_in", SignIn)
+	m.Post("/login", LogIn)
 
 	m.Run()
 }
