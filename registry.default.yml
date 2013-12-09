@@ -1,5 +1,5 @@
 ---
-hostname: localhost
+servername: localhost
 port: 8989
 db:
   type: pg

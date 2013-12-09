@@ -4,7 +4,21 @@ import (
 	"github.com/codegangsta/martini"
 	"github.com/codegangsta/martini-contrib/render"
 	"github.com/codegangsta/martini-contrib/sessions"
+
+	"os"
+	"log"
 )
+
+func init() {
+	if err := Flags(); err != nil {
+		log.Fatal(err)
+		os.Exit(1)
+	}
+	if err := Config(); err != nil {
+		//log.Fatal(err)
+		os.Exit(1)
+	}
+}
 
 func main() {
 	m := martini.Classic()
