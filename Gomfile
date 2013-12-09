@@ -1,1 +1,2 @@
 gom 'github.com/codegangsta/martini'
+gom 'github.com/codegangsta/martini-contrib/render'
