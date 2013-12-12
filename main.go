@@ -5,8 +5,8 @@ import (
 	"github.com/codegangsta/martini-contrib/render"
 	"github.com/codegangsta/martini-contrib/sessions"
 
-	"os"
 	"log"
+	"os"
 )
 
 var conf Conf
