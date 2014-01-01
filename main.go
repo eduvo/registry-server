@@ -45,6 +45,10 @@ func main() {
 		}
 	})
 
+	m.Get("/ping", func() string {
+		return "OK"
+	})
+
 	m.Get("/sign_in", SignIn)
 	m.Post("/login", LogIn)
 
