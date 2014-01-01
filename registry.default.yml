@@ -1,7 +1,7 @@
 ---
-servername: localhost
+servername: "localhost"
 serverport: "8989"
 cookiesecret: "123456789"
 db:
-  type: pg
+  type: "pg"
   

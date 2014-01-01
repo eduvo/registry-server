@@ -24,23 +24,16 @@ func init() {
 }
 
 func runTLS(m *martini.ClassicMartini) {
-	port := os.Getenv("PORT")
-	if len(port) == 0 {
-		port = "3000"
-	}
-
-	log.Println("listening on port " + port)
-	log.Fatalln(http.ListenAndServeTLS(":"+port, "cert.pem", "key.pem", m))
+	log.Println("listening on port " + conf.serverport)
+	log.Fatalln(http.ListenAndServeTLS(":"+conf.serverport, "cert.pem", "key.pem", m))
 }
 
 func main() {
 
 	//println(conf.servername)
 	m := martini.Classic()
-	m.Use(martini.Logger())
 	store := sessions.NewCookieStore([]byte(conf.cookiesecret))
 	m.Use(sessions.Sessions("registry", store))
-	m.Use(martini.Recovery())
 	m.Use(render.Renderer())
 
 	m.Get("/", func(session sessions.Session) string {
