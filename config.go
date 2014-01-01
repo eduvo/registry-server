@@ -7,8 +7,8 @@ import (
 )
 
 type Conf struct {
-	servername string
-	serverport string
+	servername   string
+	cookiesecret string
 }
 
 func Config() error {
@@ -30,9 +30,14 @@ func Config() error {
 		conf.servername = value.(string)
 	}
 	if value, err := config.Get("serverport"); err != nil {
-		conf.serverport = ":4004"
+		os.Setenv("PORT", "4004")
 	} else {
-		conf.serverport = value.(string)
+		os.Setenv("PORT", value.(string))
+	}
+	if value, err := config.Get("cookiesecret"); err != nil {
+		conf.cookiesecret = "uif23fui4iiuy3i5g4y23u"
+	} else {
+		conf.cookiesecret = value.(string)
 	}
 
 	return nil
