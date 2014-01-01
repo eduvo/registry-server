@@ -7,8 +7,14 @@ import (
 	"net/http"
 )
 
+type Domain struct {
+	Name       string
+	Stylesheet string
+}
+
 func SignIn(r render.Render) {
-	r.HTML(200, "login", nil)
+	domain := Domain{"test", "test.css"}
+	r.HTML(200, "login", domain)
 }
 
 func LogIn(res http.ResponseWriter, req *http.Request, session sessions.Session) {

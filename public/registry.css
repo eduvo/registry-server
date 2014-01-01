@@ -1,3 +1,22 @@
 body {
+  background-color: #eeeeee;
+}
+.centerbox {
+  width: 250px;
+  margin: 200px auto;
+  padding: 50px;
   background-color: #ffffff;
+}
+.centerbox h1 {
+  margin: 0;
+  text-align: center;
+}
+.centerbox form {
+  margin: auto 0;
+}
+.centerbox form input {
+  width: 100%;
+  display: inline-block;
+  border: 1px solid #666;
+  padding: 1px 5px;
 }
