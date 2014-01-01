@@ -8,6 +8,7 @@ import (
 
 type Conf struct {
 	servername string
+	serverport string
 }
 
 func Config() error {
@@ -22,9 +23,17 @@ func Config() error {
 		log.Fatal(err)
 		return err
 	}
-	value, err := config.Get("servername")
-	str := value.(string)
-	conf.servername = str
 
-	return err
+	if value, err := config.Get("servername"); err != nil {
+		conf.servername = "localhost"
+	} else {
+		conf.servername = value.(string)
+	}
+	if value, err := config.Get("serverport"); err != nil {
+		conf.serverport = ":4004"
+	} else {
+		conf.serverport = value.(string)
+	}
+
+	return nil
 }

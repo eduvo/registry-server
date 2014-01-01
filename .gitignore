@@ -24,3 +24,5 @@ _testmain.go
 
 /Registry
 /registry.yml
+/cert.pem
+/key.pem
