@@ -3,6 +3,7 @@ package main
 import (
   "github.com/codegangsta/martini-contrib/sessions"
   "net/http"
+  "strconv"
 )
 
 type Application struct {
@@ -33,7 +34,6 @@ type Identity struct {
   id int
   email string
   password string
-  accounts []Account
 }
 
 type Session struct {
@@ -41,6 +41,14 @@ type Session struct {
 }
 
 func Who(res http.ResponseWriter, req *http.Request, session sessions.Session) string {
+
+  // fake data
   application := Application{1, "testapp", "0.0.1", "development", "12345678", "12345678901234567890123456789012", ""}
-  return Decrypt([]byte(application.secret_key), []byte(req.FormValue("p")))
+  domain := Domain{1, "test", "test", application, "test.css"}
+  identity := Identity{1, "toto@toto.com", "xxx"}
+  account := Account{1, identity, domain}
+  accounts := map[string]Account{ "toto@toto.com": account }
+
+  email := Decrypt([]byte(application.secret_key), []byte(req.FormValue("p")))
+  return strconv.Itoa(accounts[email].id)
 }
