@@ -35,10 +35,11 @@ func main() {
 	store := sessions.NewCookieStore([]byte(conf.cookiesecret))
 	m.Use(sessions.Sessions("registry", store))
 	m.Use(render.Renderer())
+	logger := log.New(os.Stdout, "", log.LstdFlags)
+	m.Map(logger)
 
 	m.Get("/", func(session sessions.Session) string {
-		isLogin := IsLogin(session)
-		if isLogin {
+		if isLogin := IsLogin(session); isLogin {
 			return "login"
 		} else {
 			return "no login"
@@ -55,3 +56,4 @@ func main() {
 	runTLS(m)
 
 }
+
