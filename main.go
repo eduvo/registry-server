@@ -50,6 +50,8 @@ func main() {
 		return "OK"
 	})
 
+	m.Get("/who", Who)
+
 	m.Get("/sign_in", SignIn)
 	m.Post("/login", LogIn)
 

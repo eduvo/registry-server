@@ -7,13 +7,9 @@ import (
 	"net/http"
 )
 
-type Domain struct {
-	Name       string
-	Stylesheet string
-}
-
 func SignIn(r render.Render) {
-	domain := Domain{"test", "test.css"}
+	application := Application{1, "testapp", "0.0.1", "development", "12345678", "12345678901234567890123456789012", ""}
+	domain := Domain{1, "test", "test", application, "test.css"}
 	r.HTML(200, "login", domain)
 }
 
