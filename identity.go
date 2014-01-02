@@ -1,5 +1,10 @@
 package main
 
+import (
+  "github.com/codegangsta/martini-contrib/sessions"
+  "net/http"
+)
+
 type Application struct {
   id int
   name string
@@ -35,6 +40,7 @@ type Session struct {
   account Account
 }
 
-func Who(user string) bool {
-  return true
+func Who(res http.ResponseWriter, req *http.Request, session sessions.Session) string {
+  application := Application{1, "testapp", "0.0.1", "development", "12345678", "12345678901234567890123456789012", ""}
+  return Decrypt([]byte(application.secret_key), []byte(req.FormValue("p")))
 }
