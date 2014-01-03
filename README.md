@@ -9,7 +9,7 @@ This code is very young and still work in progress, don't use it !
 
 1. `go get github.com/mattn/gom`
 1. `gom install`
-2. `gom run *.go`
+2. `find . -d 1 -name '*.go' -not -name '*_test.go' | xargs gom run`
 
 ## Create ssl certs
 
