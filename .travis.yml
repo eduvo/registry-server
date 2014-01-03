@@ -1,8 +1,8 @@
 language: go
 go:
-  - tip
-before_install:
+  - 1.2
+install:
   - go get github.com/mattn/gom
-script:
   - $HOME/gopath/bin/gom install
+script:
   - $HOME/gopath/bin/gom test
