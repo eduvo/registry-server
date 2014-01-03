@@ -9,7 +9,14 @@ This code is very young and still work in progress, don't use it !
 
 1. `go get github.com/mattn/gom`
 1. `gom install`
-2. `find . -d 1 -name '*.go' -not -name '*_test.go' | xargs gom run`
+
+## Launch
+
+    find . -d 1 -name '*.go' -not -name '*_test.go' | xargs gom run
+
+or add an alias in your .bashrc or .zshrc, it would work on any gom-based project
+
+    alias grun="find . -d 1 -name '*.go' -not -name '*_test.go' | xargs gom run"
 
 ## Create ssl certs
 
