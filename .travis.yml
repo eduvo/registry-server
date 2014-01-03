@@ -6,3 +6,6 @@ install:
   - $HOME/gopath/bin/gom install
 script:
   - $HOME/gopath/bin/gom test
+cache:
+  directories:
+    - vendor

@@ -1,6 +1,8 @@
 Registry-server
 ===============
 
+[![Build Status](https://travis-ci.org/eduvo/registry-server.png?branch=master)](https://travis-ci.org/eduvo/registry-server)
+
 This is a centralized authentication and session management server intended to fulfill the features of a SSO server. Also check [registry-client](https://github.com/eduvo/registry-client) for rails integration.
 
 This code is very young and still work in progress, don't use it !
