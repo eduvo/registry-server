@@ -1,8 +1,10 @@
 package main
 
-import "testing"
+import (
+	"testing"
+)
 
-var key = "12345678901234567890123456789012" // 32 bytes for AES-256
+var key = "12345678901234567890123456789012"
 var plaintext = "some random long plaintext"
 var ciphertext = "00ac5bd31b24c83e3be51328cd1526c587972eaac177a8dfb2c6f496373dfc3adaf29186e7e409f1"
 var decipheredtext = "hahahahaha hahaha hahaha"
