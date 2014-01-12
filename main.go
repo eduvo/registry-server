@@ -30,13 +30,16 @@ func runTLS(m *martini.ClassicMartini) {
 
 func main() {
 
-	//println(conf.servername)
 	m := martini.Classic()
 	store := sessions.NewCookieStore([]byte(conf.cookiesecret))
 	m.Use(sessions.Sessions("registry", store))
 	m.Use(render.Renderer())
 	logger := log.New(os.Stdout, "", log.LstdFlags)
 	m.Map(logger)
+
+	m.Handlers(
+		Xtralogger,
+	)
 
 	m.Get("/", func(session sessions.Session) string {
 		if isLogin := IsLogin(session); isLogin {

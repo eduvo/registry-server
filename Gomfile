@@ -2,5 +2,9 @@ gom 'github.com/codegangsta/martini'
 gom 'github.com/codegangsta/martini-contrib/render'
 gom 'github.com/codegangsta/martini-contrib/sessions'
 
-# gom 'github.com/davecgh/go-spew/spew'
 gom 'github.com/globocom/config'
+gom 'github.com/jordan-wright/email'
+
+group :development do
+  gom 'github.com/davecgh/go-spew/spew'
+end

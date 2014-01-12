@@ -1,7 +1,6 @@
 package main
 
 import (
-	"github.com/codegangsta/martini-contrib/sessions"
 	"net/http"
 	"strconv"
 )
@@ -40,7 +39,7 @@ type Session struct {
 	account Account
 }
 
-func Who(res http.ResponseWriter, req *http.Request, session sessions.Session) string {
+func Who(res http.ResponseWriter, req *http.Request) string {
 
 	// fake data
 	application := Application{1, "testapp", "0.0.1", "development", "12345678", "12345678901234567890123456789012", ""}
