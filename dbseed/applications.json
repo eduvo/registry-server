@@ -1,0 +1,16 @@
+[
+  {
+    "name": "firstapp",
+    "version": "0.0.1",
+    "environment": "development",
+    "public_key": "11111111",
+    "secret_key": "12345678901234567890123456789012"
+  },
+  {
+    "name": "secondapp",
+    "version": "0.0.1",
+    "environment": "development",
+    "public_key": "22222222",
+    "secret_key": "210987654321098765432109876543210"
+  }
+]

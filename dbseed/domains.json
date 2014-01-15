@@ -1,0 +1,20 @@
+[
+  {
+    "name": "one",
+    "identifier": "subdomain1",
+    "stylesheet": "generic.css",
+    "application": "11114050-4584-4131-b113-381647ec7c5f"
+  },
+  {
+    "name": "two",
+    "identifier": "subdomain2",
+    "stylesheet": "generic.css",
+    "application": "11114050-4584-4131-b113-381647ec7c5f"
+  },
+  {
+    "name": "one",
+    "identifier": "subdomain3",
+    "stylesheet": "generic.css",
+    "application": "2222c9da-747c-43a7-a6ec-0936e32858ca"
+  }
+]
