@@ -10,6 +10,8 @@ type Conf struct {
 	servername   string
 	serverport   string
 	cookiesecret string
+	dbaddress    string
+	dbname       string
 }
 
 func Config() error {
@@ -39,6 +41,16 @@ func Config() error {
 		conf.cookiesecret = "uif23fui4iiuy3i5g4y23u"
 	} else {
 		conf.cookiesecret = value.(string)
+	}
+	if value, err := config.Get("dbaddress"); err != nil {
+		conf.dbaddress = "localhost:28015"
+	} else {
+		conf.dbaddress = value.(string)
+	}
+	if value, err := config.Get("dbname"); err != nil {
+		conf.dbname = "registry"
+	} else {
+		conf.dbname = value.(string)
 	}
 
 	return nil

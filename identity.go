@@ -6,37 +6,37 @@ import (
 )
 
 type Application struct {
-	id          int
-	name        string
-	version     string
-	environment string
-	public_key  string
-	secret_key  string
-	backchannel string
+	Id          int
+	Name        string
+	Version     string
+	Environment string
+	Public_key  string
+	Secret_key  string
+	Backchannel string
 }
 
 type Domain struct {
-	id          int
-	name        string
-	identifier  string
-	application Application
-	stylesheet  string
+	Id          int
+	Name        string
+	Identifier  string
+	Application Application
+	Stylesheet  string
 }
 
 type Account struct {
-	id       int
-	identity Identity
-	domain   Domain
+	Id       int
+	Identity Identity
+	Domain   Domain
 }
 
 type Identity struct {
-	id       int
-	email    string
-	password string
+	Id       int
+	Email    string
+	Password string
 }
 
 type Session struct {
-	account Account
+	Account Account
 }
 
 func Who(res http.ResponseWriter, req *http.Request) string {
@@ -48,6 +48,6 @@ func Who(res http.ResponseWriter, req *http.Request) string {
 	account := Account{1, identity, domain}
 	accounts := map[string]Account{"toto@toto.com": account}
 
-	email := Decrypt(application.secret_key, req.FormValue("p"))
-	return strconv.Itoa(accounts[email].id)
+	email := Decrypt(application.Secret_key, req.FormValue("p"))
+	return strconv.Itoa(accounts[email].Id)
 }

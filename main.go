@@ -4,12 +4,16 @@ import (
 	"github.com/codegangsta/martini"
 	"github.com/codegangsta/martini-contrib/render"
 	"github.com/codegangsta/martini-contrib/sessions"
+	r "github.com/dancannon/gorethink"
 	"log"
 	"net/http"
 	"os"
 )
 
-var conf Conf
+var (
+	dbsession *r.Session
+	conf      Conf
+)
 
 func init() {
 	if err := Flags(); err != nil {
@@ -17,6 +21,14 @@ func init() {
 		os.Exit(1)
 	}
 	err := Config() // setups conf var
+	if err != nil {
+		log.Fatal(err)
+		os.Exit(1)
+	}
+	dbsession, err = r.Connect(map[string]interface{}{
+		"address":  conf.dbaddress,
+		"database": conf.dbname,
+	})
 	if err != nil {
 		log.Fatal(err)
 		os.Exit(1)

@@ -4,6 +4,7 @@ gom 'github.com/codegangsta/martini-contrib/sessions'
 
 gom 'github.com/globocom/config'
 gom 'github.com/jordan-wright/email'
+gom 'github.com/dancannon/gorethink'
 
 group :development do
   gom 'github.com/davecgh/go-spew/spew'
