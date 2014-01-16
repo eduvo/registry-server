@@ -73,6 +73,8 @@ func main() {
 	r.Get("/sign_in", SignIn)
 	r.Post("/login", LogIn)
 
+	m.Action(r.Handle)
+
 	runTLS(m)
 
 }
