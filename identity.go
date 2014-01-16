@@ -5,16 +5,6 @@ import (
 	"time"
 )
 
-type Application struct {
-	Id          string    `gorethink:"id,omitempty"`
-	Name        string    `gorethink:"name"`
-	Version     string    `gorethink:"version"`
-	Environment string    `gorethink:"environment"`
-	Public_key  string    `gorethink:"publickey"`
-	Secret_key  string    `gorethink:"secretkey"`
-	Backchannel string    `gorethink:"backchannel"`
-	Created     time.Time `gorethink:"created,omitempty"`
-}
 
 type Domain struct {
 	Id          string    `gorethink:"id,omitempty"`
