@@ -6,11 +6,12 @@ import (
 	//"github.com/davecgh/go-spew/spew"
 	"net/http"
 	"time"
+	"./data"
 )
 
 func SignIn(r render.Render) {
-	application := Application{"1", "testapp", "0.0.1", "development", "12345678", "12345678901234567890123456789012", "", time.Now()}
-	domain := Domain{"1", "test", "test", "test.css", time.Now(), application}
+	application := data.Application{"1", "testapp", "0.0.1", "development", "12345678", "12345678901234567890123456789012", "", time.Now()}
+	domain := data.Domain{"1", "test", "test", "test.css", time.Now(), application}
 	r.HTML(200, "login", domain)
 }
 

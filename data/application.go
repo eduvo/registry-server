@@ -1,4 +1,4 @@
-package main
+package data
 
 import (
   "time"
@@ -13,8 +13,6 @@ type ApplicationDB interface {
   //Update(a *Album) error
   //Delete(id int)
 }
-
-var db ApplicationDB
 
 type Applications struct {
   m   map[string]*Application
