@@ -1,4 +1,4 @@
-package main
+package tool
 
 import (
 	"flag"
@@ -10,7 +10,7 @@ var (
 )
 
 func init() {
-	flag.StringVar(&ConfigFile, "config", "registry.yml", "Path to the Registry config file")
+	flag.StringVar(&ConfigFile, "config", "config/registry.yml", "Path to the Registry config file")
 }
 
 func Flags() error {

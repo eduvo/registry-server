@@ -1,4 +1,4 @@
-package main
+package action
 
 import (
 	"github.com/codegangsta/martini-contrib/render"
@@ -6,7 +6,7 @@ import (
 	//"github.com/davecgh/go-spew/spew"
 	"net/http"
 	"time"
-	"./data"
+	"../data"
 )
 
 func SignIn(r render.Render) {

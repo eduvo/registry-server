@@ -1,4 +1,4 @@
-package main
+package action
 
 import (
 	"github.com/codegangsta/martini-contrib/sessions"

@@ -8,27 +8,30 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"./actions"
+	"./handlers"
+	"./tools"
 )
 
 var (
 	dbsession *gorethink.Session
-	conf      Conf
 	m 				*martini.Martini
+	conf      tool.Conf
 )
 
 func init() {
-	if err := Flags(); err != nil {
+	if err := tool.Flags(); err != nil {
 		log.Fatal(err)
 		os.Exit(1)
 	}
-	err := Config() // setups conf var
+	err := conf.Config(tool.ConfigFile) // setups conf var
 	if err != nil {
 		log.Fatal(err)
 		os.Exit(1)
 	}
 	dbsession, err = gorethink.Connect(map[string]interface{}{
-		"address":  conf.dbaddress,
-		"database": conf.dbname,
+		"address":  conf.Dbaddress,
+		"database": conf.Dbname,
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -37,15 +40,15 @@ func init() {
 }
 
 func runTLS(m *martini.Martini) {
-	log.Println("listening on port " + conf.serverport)
-	log.Fatalln(http.ListenAndServeTLS(":"+conf.serverport, "cert.pem", "key.pem", m))
+	log.Println("listening on port " + conf.Serverport)
+	log.Fatalln(http.ListenAndServeTLS(":"+conf.Serverport, "config/cert.pem", "config/key.pem", m))
 }
 
 func main() {
 
 	m := martini.New()
 	m.Use(martini.Recovery())
-	store := sessions.NewCookieStore([]byte(conf.cookiesecret))
+	store := sessions.NewCookieStore([]byte(conf.Cookiesecret))
 	m.Use(sessions.Sessions("registry", store))
 	m.Use(render.Renderer())
 	logger := log.New(os.Stdout, "", log.LstdFlags)
@@ -53,11 +56,11 @@ func main() {
 
 	r := martini.NewRouter()
 	m.Handlers(
-		Xtralogger,
+		handler.Xtralogger,
 	)
 
 	r.Get("/", func(session sessions.Session) string {
-		if isLogin := IsLogin(session); isLogin {
+		if isLogin := action.IsLogin(session); isLogin {
 			return "login"
 		} else {
 			return "no login"
@@ -68,10 +71,10 @@ func main() {
 		return "OK"
 	})
 
-	r.Get("/who", Who)
+	r.Get("/who", action.Who)
 
-	r.Get("/sign_in", SignIn)
-	r.Post("/login", LogIn)
+	r.Get("/sign_in", action.SignIn)
+	r.Post("/login", action.LogIn)
 
 	m.Action(r.Handle)
 
