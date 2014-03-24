@@ -2,7 +2,7 @@ gom 'github.com/codegangsta/martini'
 gom 'github.com/codegangsta/martini-contrib/render'
 gom 'github.com/codegangsta/martini-contrib/sessions'
 
-gom 'github.com/globocom/config'
+gom 'github.com/tsuru/config'
 gom 'github.com/jordan-wright/email'
 gom 'github.com/dancannon/gorethink'
 

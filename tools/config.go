@@ -1,7 +1,7 @@
 package tool
 
 import (
-	"github.com/globocom/config"
+	"github.com/tsuru/config"
 	"log"
 	"os"
 )
